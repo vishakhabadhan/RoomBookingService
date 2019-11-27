@@ -31,18 +31,18 @@ public class BookingService {
         return roomRepository.findAll();
     }
     
-    public BookingResponse createBooking(final CreateBookingRequest createBookingRequest) {
+    public Optional<Booking> createBooking(final CreateBookingRequest createBookingRequest) {
         log.info("createBooking"); 
         
         if(!validateBooking(createBookingRequest)) {
         	log.info("invalid booking, overlapping booking dates");	
-        	return new BookingResponse(null, false);
+        	return Optional.empty();
         }
         
         log.info("Booking successful");
-        return new BookingResponse(bookingRepository.save(new Booking(
+        return Optional.of(bookingRepository.save(new Booking(
         		createBookingRequest.getCheckInDate(), createBookingRequest.getCheckOutDate(),
-        		roomRepository.findById(createBookingRequest.getRoomId()).get())).getId(), true);
+        		roomRepository.findById(createBookingRequest.getRoomId()).get())));
     }
       
     private boolean validateBooking(CreateBookingRequest createBookingRequest) {
