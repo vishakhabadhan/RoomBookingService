@@ -11,7 +11,7 @@ import com.medici.roombooking.db.entities.Booking;
 
 public interface BookingRepository extends JpaRepository<Booking, Long> {
 	
-	@Query("SELECT b FROM Booking b WHERE b.room.id = ?1 and b.checkOutDate > ?2 and b.checkInDate < ?3")
+	@Query("SELECT b FROM Booking b WHERE b.room.id = ?1 and b.checkOutDate >= ?2 and b.checkInDate <= ?3")
 	List<Booking> findAllByRoomIdAndCheckInDateCriteria(@Param("roomId") final Long roomId, @Param("checkInDate") final LocalDate checkInDate, @Param("checkOutDate") final LocalDate checkOutDate);
 }
 
