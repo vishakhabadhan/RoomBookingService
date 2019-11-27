@@ -41,7 +41,7 @@ private static final Logger log = LoggerFactory.getLogger(RoomBookingController.
     @RequestMapping(path = "booking", method = RequestMethod.POST)
     public ResponseEntity<BookingResponse> createBooking(@RequestBody final CreateBookingRequest createBookingRequest) {
         log.info("Controller createBooking");
-        BookingResponse response = bookingService.createBooking(createBookingRequest);
+        BookingResponse response = new BookingResponse(bookingService.createBooking(createBookingRequest));
         return ResponseEntity.ok().body(response);
     }   
     
