@@ -2,12 +2,14 @@ package com.medici.roombooking.domain;
 
 public class BookingResponse {
 
-	private Long dbId;
-	private Boolean bookingSuccessful;
+	private Long dbId = null;
+	private Boolean bookingSuccessful = false;
 		
-	public BookingResponse(Long dbId, Boolean bookingSuccessful) {
-		this.dbId = dbId;
-		this.bookingSuccessful = bookingSuccessful;
+	public BookingResponse(Optional<Booking> response) {				
+		if(response.isPresent()){
+			this.dbId = response.get().getId();
+			this.bookingSuccessful = true;
+		}		
 	}
 	
 	public Long getDbId() {
