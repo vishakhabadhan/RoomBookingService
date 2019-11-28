@@ -2,10 +2,6 @@
 Project Starter - RoomBookingServiceApplication.java class
 ResponseEntity exception handling (controller) - RestResponseEntityExceptionHandler.java
 
-Swagger api handler -
-SwaggerConfig.java can be connected on http://localhost:8080/swagger-ui.html when application is up and running. 
-All api are available to test.
-
 # API endpoints -
 
 ### /booking
