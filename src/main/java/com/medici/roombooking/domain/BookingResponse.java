@@ -1,5 +1,9 @@
 package com.medici.roombooking.domain;
 
+import java.util.Optional;
+
+import com.medici.roombooking.db.entities.Booking;
+
 public class BookingResponse {
 
 	private Long dbId = null;
